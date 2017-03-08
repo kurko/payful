@@ -1,5 +1,5 @@
-module Payful
-  class ApplicationController < ActionController::Base
-    protect_from_forgery with: :exception
+#module Payful
+  class Payful::ApplicationController < ::ApplicationController
+    #protect_from_forgery with: :exception
   end
-end
+#end

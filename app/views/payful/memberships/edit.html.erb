@@ -1,0 +1,23 @@
+<%= simple_form_for @customer, url: @update_path do |f| %>
+  <% # FIXME i18n %>
+  <%= select_tag(
+    :payful_period,
+    options_for_select([
+      [I18n.t("services.periods.#{30}"),  30],
+      [I18n.t("services.periods.#{90}"),  90],
+      [I18n.t("services.periods.#{180}"), 180],
+      [I18n.t("services.periods.#{365}"), 365]
+    ])
+  )
+  %>
+  <p>
+    <%= f.fields_for :memberships do |s| %>
+      <%= s.input :id, as: :hidden %>
+      <%= s.input :payful_service_id, as: :hidden %>
+      <%= s.input :active, as: :boolean,
+        label: "#{s.object.service.name} (#{s.object.service.pricing})" %>
+    <% end %>
+  </p>
+
+  <%= f.submit 'Gerar Boleto', id: 'js-submit-membership' %>
+<% end %>
