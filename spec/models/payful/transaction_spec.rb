@@ -36,10 +36,22 @@ module Payful
           subject.metadata = { "test" => "value" }
           expect(subject.metadata).to eq({ "test" => "value" })
           subject.save!
-          subject.metadata = { test2: "value2" }
+          subject.metadata = {
+            test2: "value2",
+            array: [{
+              k1: "v1",
+              k2: 2
+            }]
+          }
           subject.save!
           subject = described_class.last
-          expect(subject.metadata).to eq({ "test2" => "value2" })
+          expect(subject.metadata).to eq({
+            "test2" => "value2",
+            "array" => [{
+              "k1" => "v1",
+              "k2" => 2
+            }]
+          })
           subject.update!(metadata: { "test3" => "value3" })
           expect(subject.metadata).to eq({ "test3" => "value3" })
         end

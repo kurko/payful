@@ -27,8 +27,10 @@ module Payful
 
     # TODO test
     def update_payment_details(params)
-      self.payment_url ||= params[:payment_url]
-      self.payment_remote_id ||= params[:payment_remote_id]
+      update!(
+        payment_url: params[:payment_url],
+        payment_remote_id: params[:payment_remote_id]
+      )
     end
 
     def mark_as_emailed!
