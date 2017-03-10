@@ -125,6 +125,45 @@ module Payful
       end
     end
 
+    describe '#mark_as_complete' do
+      let(:now) { Time.now.utc }
+      let(:membership1) { create(:membership) }
+      let(:membership2) { create(:membership) }
+      let(:transaction) { create(:transaction, memberships: [membership1, membership2]) }
+
+      subject { transaction }
+
+      it "changes the state" do
+        transaction.mark_as_complete(now)
+        expect(subject.state).to eq "complete"
+      end
+
+      it "changes the completed_at date" do
+        transaction.mark_as_complete(now)
+        expect(subject.completed_at).to eq now
+      end
+
+      context 'all memberships expire dates are nil' do
+        it "sets a new expire date for memberships" do
+          expect(membership1.expires_at).to eq nil
+          expect(membership2.expires_at).to eq nil
+          transaction.mark_as_complete(now)
+          expect(membership1.expires_at).to eq(now + 30.days)
+          expect(membership2.expires_at).to eq(now + 30.days)
+        end
+      end
+
+      context 'some memberships expires in different dates' do
+        it "sets a new expire date for memberships individually" do
+          expect(membership1.expires_at).to eq nil
+          membership2.update!(expires_at: now + 45.days)
+          transaction.mark_as_complete(now)
+          expect(membership1.expires_at).to eq(now + 30.days)
+          expect(membership2.expires_at).to eq(now + 45.days + 30.days)
+        end
+      end
+    end
+
     describe '#customer' do
       let(:service) { create(:service) }
       # we don't have a customer table, so let's go with another one
@@ -132,6 +171,7 @@ module Payful
       let(:membership) do
         Membership.create!(
           base_price_in_cents: 1,
+          base_price_days: 30,
           memberable: memberable,
           service: service
         )
@@ -168,7 +208,7 @@ module Payful
         it 'sets a value' do
           subject.update!(payment_url: "old-url")
           subject.update_payment_details(params)
-          expect(subject.payment_url).to eq "old-url"
+          expect(subject.payment_url).to eq "my-url"
         end
       end
     end

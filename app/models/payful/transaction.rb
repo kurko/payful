@@ -38,7 +38,14 @@ module Payful
     end
 
     def mark_as_complete(at = Time.now)
-      update!(state: 'complete', completed_at: at)
+      ActiveRecord::Base.transaction do
+        update!(state: 'complete', completed_at: at)
+        memberships.each do |membership|
+          current_expires_at = membership.expires_at || at
+          new_expires_at = current_expires_at + extends_memberships_for_days.days
+          membership.update!(expires_at: new_expires_at)
+        end
+      end
     end
 
     def self.has_any_complete_this_month?

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170221140942) do
+ActiveRecord::Schema.define(version: 20170309145901) do
 
   create_table "payful_memberships", force: :cascade do |t|
     t.integer  "payful_service_id"
@@ -72,5 +72,23 @@ ActiveRecord::Schema.define(version: 20170221140942) do
   add_index "payful_transactions", ["owner_type", "owner_id"], name: "payful_txn_owner_type_id"
   add_index "payful_transactions", ["payment_remote_id"], name: "index_payful_transactions_on_payment_remote_id"
   add_index "payful_transactions", ["state"], name: "index_payful_transactions_on_state"
+
+  create_table "payful_webhooks", force: :cascade do |t|
+    t.integer  "hookable_id"
+    t.string   "hookable_type"
+    t.string   "state",               null: false
+    t.datetime "failed_at"
+    t.datetime "processed_at"
+    t.string   "source"
+    t.string   "source_reference_id"
+    t.string   "event"
+    t.text     "data_json"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  add_index "payful_webhooks", ["hookable_id", "hookable_type"], name: "index_payful_webhooks_on_hookable_id_and_hookable_type"
+  add_index "payful_webhooks", ["source_reference_id"], name: "index_payful_webhooks_on_source_reference_id"
+  add_index "payful_webhooks", ["state"], name: "index_payful_webhooks_on_state"
 
 end

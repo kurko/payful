@@ -30,7 +30,7 @@ module Payful
         )
         # This will generate a BankSlip or charge a credit
         # card token if needed.
-        Payful::ChargeJob.perform_now(transaction.id)
+        Payful::ChargeJob.perform_later(transaction.id)
 
         redirect_to redirect_path_after_update
       else
