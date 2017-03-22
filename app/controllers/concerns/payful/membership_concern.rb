@@ -32,13 +32,17 @@ module Payful
         # card token if needed.
         Payful::ChargeJob.perform_later(transaction.id)
 
-        redirect_to redirect_path_after_update
+        redirect_to redirect_path_after_update, notice: notice_message_after_update
       else
         render :edit
       end
     end
 
     private
+
+    def notice_message_after_update
+      nil
+    end
 
     def customer_model
       raise StandardError, "Undefined method #customer"
