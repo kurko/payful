@@ -22,7 +22,7 @@ module Payful
         # TODO add descriptions
         transaction = Payful::Transaction.create!(
           memberships: @customer.memberships,
-          extends_memberships_for_days: params[:payful_period],
+          extends_memberships_for_days: @extends_memberships_for_days || params[:payful_period],
           payment_type: "bank_slip",
           metadata: @metadata,
           owner: @customer,
