@@ -22,8 +22,11 @@ module Payful
     end
 
     def self.base_price_in_cents_for_service(service, period)
+      if service.is_a?(Symbol)
+        service = Payful::Service.where(name: service).first
+      end
+
       if membership = where(
-          active: true,
           base_price_days: period,
           payful_service_id: service.id
         ).first
