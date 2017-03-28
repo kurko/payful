@@ -13,6 +13,14 @@ module Payful
       where("payful_memberships.expires_at > ?", Time.now)
     }
 
+    def service_id=(value)
+      self.payful_service_id = value
+    end
+
+    def service_id
+      payful_service_id
+    end
+
     def self.base_price_in_cents_for_service(service, period)
       if membership = where(
           active: true,
