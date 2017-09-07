@@ -1,0 +1,19 @@
+pt-BR:
+  views:
+    payful:
+      sections:
+        name: Seções
+        coupons:
+          title: Cupons
+          description: Cupons de desconto permitem você oferecer desconto aos seus clientes.
+      coupons:
+        index:
+          h1: Cupons de desconto
+          new: Novo cupom
+          no_coupons: Não há cupons cadastrados.
+          code: Código
+          description: Descrição
+        new:
+          page_title: Novo cupom de desconto
+        form:
+          submit: Salvar

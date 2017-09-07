@@ -3,6 +3,7 @@ module Payful
     isolate_namespace Payful
 
     config.autoload_paths += Dir[config.root.join('lib', '{**}')]
+    config.i18n.load_path += Dir["#{config.root}/config/locale/**/*.yml"]
 
     initializer :append_migrations do |app|
       unless app.root.to_s.match root.to_s

@@ -1,0 +1,19 @@
+en:
+  views:
+    forms:
+      saved: Saved successfully.
+    payful:
+      sections:
+        name: Sections
+        coupons:
+          title: coupons
+          description: Discount cupons allow you to offer discounts for clients.
+      coupons:
+        index:
+          h1: Discount coupons
+          new: New coupons
+          no_coupons: No coupons.
+        new:
+          page_title: New coupon
+        form:
+          submit: Save

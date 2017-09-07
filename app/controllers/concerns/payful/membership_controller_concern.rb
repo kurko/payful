@@ -1,5 +1,5 @@
 module Payful
-  module MembershipConcern
+  module MembershipControllerConcern
     def edit
       @customer = customer_model
       Payful::Service.find_each do |service|
@@ -34,6 +34,9 @@ module Payful
 
         redirect_to redirect_path_after_update, notice: notice_message_after_update
       else
+        msg = "Ocorreu um erro ao tentar salvar o cliente. Entre em contato com o administrador."
+        Rails.logger.error "[Payful] #{msg}"
+        flash[:alert] = msg
         render :edit
       end
     end
