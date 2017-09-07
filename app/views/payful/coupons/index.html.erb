@@ -1,0 +1,34 @@
+<h1><%= I18n.t("views.payful.coupons.index.h1") %></h1>
+
+<p>
+  <%= link_to t("views.payful.coupons.index.new"), new_coupon_path, id: 'new-coupon' %>
+</p>
+
+<% if @resources.present? %>
+  <table>
+    <thead>
+      <tr>
+        <th>
+          <%= t("views.payful.coupons.index.code") %>
+        </th>
+        <th>
+          <%= t("views.payful.coupons.index.description") %>
+        </th>
+      </tr>
+    </thead>
+    <% @resources.each do |resource| %>
+      <tr>
+        <td>
+          <%= link_to resource.code, edit_coupon_path(resource), id: "coupon-#{resource.id}" %>
+        </td>
+        <td>
+          <%= resource.description %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+  <p>
+    <%= t("views.payful.coupons.index.no_coupons") %>
+  </p>
+<% end %>

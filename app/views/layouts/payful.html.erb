@@ -1,0 +1,8 @@
+<html>
+<body>
+
+  <div class="notice"><%= flash[:notice] if flash[:notice].present? %></div>
+  <div class="alert"><%= flash[:alert] if flash[:alert].present? %></div>
+  <%= yield %>
+</body>
+</html>

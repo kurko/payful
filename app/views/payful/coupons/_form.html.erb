@@ -1,0 +1,17 @@
+<%= simple_form_for @resource do |f| %>
+  <% # render 'payful/shared/form_errors', record: @resource %>
+
+  <%= f.input :code, autofocus: true %>
+  <%= f.input :description %>
+  <%= f.input :redemption_limit, as: :integer, min: 0 %>
+  <%= f.input :coupon_type, collection: Payful::Coupon::TYPES, include_blank: false %>
+  <%= f.input :amount %>
+
+
+  <%= f.input :valid_from, as: :date, html5: true, include_blank: true, start_year: Date.current.year, end_year: Date.current.year + 10 %>
+  <%= f.input :valid_until, as: :date, html5: true, include_blank: true, start_year: Date.current.year, end_year: Date.current.year + 10 %>
+
+
+  <%= f.submit I18n.t("views.payful.coupons.form.submit"), class: 'submit', id: 'save' %>
+
+<% end %>
