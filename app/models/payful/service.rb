@@ -2,7 +2,7 @@ module Payful
   class Service < ActiveRecord::Base
     class UndefinedPricingDays < StandardError; end
 
-    has_many :pricing, class_name: Payful::ServicePricing
+    has_many :pricing, class_name: "Payful::ServicePricing"
 
     def self.setup(name, pricing)
       service = nil
