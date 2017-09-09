@@ -1,4 +1,4 @@
-class CreatePayfulTransactions < ActiveRecord::Migration
+class CreatePayfulTransactions < ActiveRecord::Migration[4.2]
   def change
     create_table :payful_transactions do |t|
       t.integer  :owner_id

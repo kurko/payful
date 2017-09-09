@@ -1,4 +1,4 @@
-class CreatePayfulServicePricings < ActiveRecord::Migration
+class CreatePayfulServicePricings < ActiveRecord::Migration[4.2]
   def change
     create_table :payful_service_pricings do |t|
       t.integer :service_id, index: true

@@ -1,4 +1,4 @@
-class CreatePayfulMemberships < ActiveRecord::Migration
+class CreatePayfulMemberships < ActiveRecord::Migration[4.2]
   def change
     create_table :payful_memberships do |t|
       t.references :payful_service, index: true, foreign_key: true

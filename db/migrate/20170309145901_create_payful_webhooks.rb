@@ -1,4 +1,4 @@
-class CreatePayfulWebhooks < ActiveRecord::Migration
+class CreatePayfulWebhooks < ActiveRecord::Migration[4.2]
   def change
     create_table :payful_webhooks do |t|
       t.integer :hookable_id
