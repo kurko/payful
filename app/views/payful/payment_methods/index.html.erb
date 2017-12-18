@@ -1,0 +1,64 @@
+<div class="row">
+  <div class="small-12 columns">
+    <section class="card">
+      <div class="row">
+        <div class="medium-6 small-12 columns center-text-on-mobile">
+          <h2>Lista de cartões</h2>
+        </div>
+        <div class="medium-6 small-12 right show-for-medium columns">
+          <%= link_to "Novo cartão",
+            new_admin_client_payment_method_path(@client),
+            class: "btn",
+            id: "create-payment-method"
+          %>
+        <br />
+        <br />
+        </div>
+      </div>
+
+      <table class="text">
+        <thead>
+          <tr>
+            <th>
+            </th>
+            <th>
+              Detalhes
+            </th>
+            <th>
+            </th>
+            <th>
+              Detalhes 2
+            </th>
+            <th>
+            </th>
+            <th>
+              Detalhes 3
+            </th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <table class="text">
+            <% if @resources.present? %>
+              <% @resources.each do |resource| %>
+                <tr>
+                  <td>
+                    <%= link_to resource.owner_id, admin_client_payment_method_path(@client, resource) %>
+                  </td>
+                </tr>
+              <% end %>
+            <% else %>
+              <%= "Você não possui cartão de crédito cadastrado" %>
+            <% end %>
+          </tbody>
+        </table>
+      </table>
+    </section>
+
+    <div class="row" id="pagination">
+      <div class="small-12 columns">
+        <%= paginate @resources %>
+      </div>
+    </div>
+  </div>
+</div>

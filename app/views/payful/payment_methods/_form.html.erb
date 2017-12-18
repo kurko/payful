@@ -1,0 +1,27 @@
+<%= simple_form_for @resource, url: @update_path do |f| %>
+  <%= f.input :number, label: "Número do Cartão de Crédito",
+    input_html: {
+      as: :string,
+      maxlength: 16,
+      data: {
+        format: "number"
+      }
+    } %>
+  <%= f.input :verification_value, label: "CVV",
+    input_html: {
+      maxlength: 3,
+      data: {
+        format: "number"
+      }
+    } %>
+  <%= f.input :expiration, label: "Data de vencimento do cartão",
+    hint: "Ex.: 062018",
+    input_html: {
+      maxlength: 6,
+      data: {
+        format: "number"
+      }
+    } %>
+  <%= f.input :full_name, as: :string, label: "Nome completo no cartão" %>
+  <%= f.button :submit, 'Salvar' %>
+<% end %>
