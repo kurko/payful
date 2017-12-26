@@ -1,27 +1,60 @@
+<script type="text/javascript" src="https://js.iugu.com/v2"></script>
+
 <%= simple_form_for @resource, url: @update_path, html: {id: 'payment-method-form'} do |f| %>
-  <%= f.input :number, label: "Número do Cartão de Crédito",
-    input_html: {
-      as: :string,
+  <%= f.input :token, as: :hidden, input_html: { id: 'credit-card-token' } %>
+  <%= f.input :brand, as: :hidden, input_html: { id: 'credit-card-brand' } %>
+  <%= f.input :last4, as: :hidden, input_html: { id: 'credit-card-last4' } %>
+
+  <div class="input string optional payment_method_number field_with_hint">
+    <label class="string optional control-label" for="credit-card-number">
+      Número do cartão
+    </label>
+    <%= text_field_tag :number,
+      "",
+      label: "Número do Cartão de Crédito",
       maxlength: 16,
+      id: 'credit-card-number',
       data: {
-        format: "number"
-      }
-    } %>
-  <%= f.input :verification_value, label: "CVV",
-    input_html: {
+        format: "number",
+        iugu: 'number'
+      } %>
+  </div>
+
+  <div class="input string optional payment_method_verification_value field_with_hint">
+    <label class="string optional control-label" for="credit-card-cvv">
+      Código de segurança
+    </label>
+    <%= text_field_tag :verification_value,
+      "",
+      label: "CVV",
       maxlength: 3,
+      id: 'credit-card-cvv',
       data: {
-        format: "number"
-      }
-    } %>
-  <%= f.input :expiration, label: "Data de vencimento do cartão",
+        format: "number",
+        iugu: 'verification_value'
+      } %>
+    <span class="hint">Ex.: 123</span>
+  </div>
+
+  <%= f.input :expires_at, label: "Data de vencimento do cartão",
     hint: "Ex.: 062018",
+    as: :string,
     input_html: {
       maxlength: 6,
+      id: 'credit-card-expires-at',
       data: {
-        format: "number"
+        iugu: 'expiration'
       }
     } %>
-  <%= f.input :full_name, as: :string, label: "Nome completo no cartão" %>
-  <%= f.button :submit, 'Salvar' %>
+  <%= f.input :full_name,
+    as: :string,
+    label: "Nome completo no cartão",
+    input_html: {
+      id: 'credit-card-full-name',
+      data: {
+        iugu: 'full_name'
+      }
+    }
+  %>
+  <%= f.button :submit, 'Salvar', id: "save-payment-method" %>
 <% end %>

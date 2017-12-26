@@ -3,6 +3,7 @@ PATH
   specs:
     payful (0.1.0)
       rails (~> 5)
+      simple_form (~> 3)
 
 GEM
   remote: https://rubygems.org/
@@ -68,6 +69,9 @@ GEM
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     i18n (0.8.6)
+    kaminari (0.17.0)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.7.0)
@@ -130,6 +134,9 @@ GEM
       rspec-mocks (~> 3.6.0)
       rspec-support (~> 3.6.0)
     rspec-support (3.6.0)
+    simple_form (3.5.0)
+      actionpack (> 4, < 5.2)
+      activemodel (> 4, < 5.2)
     slop (3.6.0)
     sprockets (3.7.1)
       concurrent-ruby (~> 1.0)
@@ -156,6 +163,7 @@ DEPENDENCIES
   awesome_print
   capybara
   factory_girl_rails
+  kaminari
   payful!
   pry-rails
   rspec-rails
