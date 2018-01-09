@@ -27,7 +27,7 @@ module Payful
         @resource.is_default = "true"
         details = {
           token: params[:token],
-          brand: params[:token],
+          brand: params[:brand],
           last4: params[:last4],
           full_name: params[:full_name]
         }
@@ -35,7 +35,7 @@ module Payful
         if @resource.save
           redirect_to admin_client_payment_methods_path(@client)
         else
-          render 'new'
+          render 'payful/payment_methods/new'
         end
       end
 
