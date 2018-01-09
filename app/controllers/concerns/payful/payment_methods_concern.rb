@@ -21,6 +21,17 @@ module Payful
 
       def create
         @resource = Payful::PaymentMethod.new(resource_params)
+        @resource.owner = payment_method_owner
+        @resource.service = payment_gateway_name
+        @resource.method_type = payment_method_type
+        @resource.is_default = "true"
+        details = {
+          token: params[:token],
+          brand: params[:token],
+          last4: params[:last4],
+          full_name: params[:full_name]
+        }
+        @resource.details = details
         if @resource.save
           redirect_to admin_client_payment_methods_path(@client)
         else
@@ -39,12 +50,10 @@ module Payful
         params
           .require(:payment_method)
           .permit(
-            :owner_id,
-            :owner_type,
-            :service,
-            :method_type,
             :token,
             :brand,
+            :last4,
+            :full_name
           )
       end
 

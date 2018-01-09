@@ -19,8 +19,8 @@ window.onload = function() {
 
   document.getElementById('credit-card-number').value = "4111111111111111";
   document.getElementById('credit-card-cvv').value = "123";
-  document.getElementById('payment_method_expires_at').value = "06/18";
-  document.getElementById('payment_method_full_name').value = "First Last";
+  document.getElementById('credit-card-expires-at').value = "06/18";
+  document.getElementById('credit-card-full-name').value = "First Last";
 
   // FIXME gateway
   Iugu.setAccountID("65778854349B4D4A8080E3841A8B6C63");
