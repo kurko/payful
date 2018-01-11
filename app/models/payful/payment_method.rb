@@ -7,7 +7,7 @@ module Payful
     attr_accessor :last4
     attr_accessor :full_name
 
-    validates :full_name, format: { with: /\A[a-zA-Z]+\z/ }
+    #validates :full_name, format: { with: /\A[a-zA-Z]+\z/ }
 
     def details=(value)
       self.details_json = ActiveSupport::JSON.encode(value)

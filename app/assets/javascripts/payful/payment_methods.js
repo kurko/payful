@@ -29,7 +29,6 @@ function PaymentMethodForm(id) {
   let form = document.getElementById(id);
   let onFormSubmit = function(e) {
     console.log('onFormSubmit');
-    alert(setAccountID)
 
     // FIXME gateway
 

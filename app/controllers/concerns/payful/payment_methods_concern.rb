@@ -26,8 +26,8 @@ module Payful
         @resource.method_type = payment_method_type
         @resource.is_default = "true"
         details = {
-          token: params[:token],
           brand: params[:brand],
+          token: params[:token],
           last4: params[:last4],
           full_name: params[:full_name]
         }
