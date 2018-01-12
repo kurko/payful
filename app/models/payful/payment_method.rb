@@ -6,6 +6,8 @@ module Payful
     attr_accessor :brand
     attr_accessor :last4
     attr_accessor :full_name
+    attr_accessor :expires_at
+    attr_accessor :verification_value
 
     #validates :full_name, format: { with: /\A[a-zA-Z]+\z/ }
 
