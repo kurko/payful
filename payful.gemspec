@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency "rails", "~> 5"
   s.add_dependency "simple_form", "~> 3"
+  s.add_dependency "kaminari"
 
   s.add_development_dependency 'awesome_print'
   s.add_development_dependency 'pry-rails'
