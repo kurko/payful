@@ -21,6 +21,8 @@ module Payful
     end
 
     def mark_as_default
+      # mark is_default as true if occurs change in it and if before the change the value was false.
+      # also, if it is the first record being created, turns is_default to true
       if changes[:is_default].present? && !changes[:is_default][0] && changes[:is_default][1]
         self.class
           .where(owner: owner)
@@ -32,6 +34,8 @@ module Payful
     end
 
     def after_default_destroyed
+      # if paymentmethod being destroyed is true,
+      # finds another paymentmethod and turn it into true
       payment_methods = self.class.where(owner: owner)
       if is_default && payment_methods.present?
         payment_methods
