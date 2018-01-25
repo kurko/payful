@@ -14,7 +14,7 @@ class CreatePayfulPaymentMethods < ActiveRecord::Migration[5.1]
       t.timestamps null: false
     end
 
-    #add_index :payful_payment_methods, :is_default
+    add_index :payful_payment_methods, :is_default
     add_index :payful_payment_methods, [:owner_id, :owner_type]
   end
 end

@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     payful (0.1.0)
+      kaminari
       rails (~> 5)
       simple_form (~> 3)
 
@@ -69,9 +70,18 @@ GEM
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     i18n (0.8.6)
-    kaminari (0.17.0)
-      actionpack (>= 3.0.0)
-      activesupport (>= 3.0.0)
+    kaminari (1.1.1)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.1.1)
+      kaminari-activerecord (= 1.1.1)
+      kaminari-core (= 1.1.1)
+    kaminari-actionview (1.1.1)
+      actionview
+      kaminari-core (= 1.1.1)
+    kaminari-activerecord (1.1.1)
+      activerecord
+      kaminari-core (= 1.1.1)
+    kaminari-core (1.1.1)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.7.0)
@@ -163,7 +173,6 @@ DEPENDENCIES
   awesome_print
   capybara
   factory_girl_rails
-  kaminari
   payful!
   pry-rails
   rspec-rails

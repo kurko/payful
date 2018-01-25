@@ -12,12 +12,6 @@ module Payful
     attr_accessor :verification_value
     attr_accessor :number
 
-
-    #validates :number, length: { is: 16 }
-    #validates :verification_value, length: { is: 3 }
-    #validates :expires_at, length: { is: 5, wrong_length: "It must contain 4 numbers with slash between month and year like in the example" }
-    #validates :full_name, format: { with: /\A[a-zA-Z]+(?: [a-zA-Z]+)?+(?: [a-zA-Z]+)?+(?: [a-zA-Z]+)?\z/, message: "Only allows letters" }
-
     def details=(value)
       self.details_json = ActiveSupport::JSON.encode(value)
     end
