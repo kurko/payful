@@ -2,9 +2,7 @@ PATH
   remote: .
   specs:
     payful (0.1.0)
-      kaminari
       rails (~> 5)
-      simple_form (~> 3)
 
 GEM
   remote: https://rubygems.org/
@@ -70,18 +68,6 @@ GEM
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     i18n (0.8.6)
-    kaminari (1.1.1)
-      activesupport (>= 4.1.0)
-      kaminari-actionview (= 1.1.1)
-      kaminari-activerecord (= 1.1.1)
-      kaminari-core (= 1.1.1)
-    kaminari-actionview (1.1.1)
-      actionview
-      kaminari-core (= 1.1.1)
-    kaminari-activerecord (1.1.1)
-      activerecord
-      kaminari-core (= 1.1.1)
-    kaminari-core (1.1.1)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.7.0)
@@ -144,9 +130,6 @@ GEM
       rspec-mocks (~> 3.6.0)
       rspec-support (~> 3.6.0)
     rspec-support (3.6.0)
-    simple_form (3.5.0)
-      actionpack (> 4, < 5.2)
-      activemodel (> 4, < 5.2)
     slop (3.6.0)
     sprockets (3.7.1)
       concurrent-ruby (~> 1.0)
