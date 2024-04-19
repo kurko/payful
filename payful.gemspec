@@ -7,7 +7,7 @@ require "payful/version"
 Gem::Specification.new do |s|
   s.name        = "payful"
   s.version     = Payful::VERSION
-  s.authors     = ["Alexandre de Oliveira"]
+  s.authors     = ["Alex Oliveira"]
   s.email       = ["chavedomundo@gmail.com"]
   s.homepage    = "https://github.com/kurko/payful"
   s.summary     = "Summary"
@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
   s.test_files = Dir["spec/**/*"]
 
-  s.add_dependency "rails", "~> 5"
+  s.add_dependency "rails", ">= 6"
 
   s.add_development_dependency 'awesome_print'
   s.add_development_dependency 'pry-rails'
